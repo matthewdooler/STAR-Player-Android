@@ -1,2 +1,0 @@
-STAR Player for Android
-===================
