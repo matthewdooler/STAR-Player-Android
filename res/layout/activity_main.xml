@@ -22,7 +22,7 @@
         android:layout_height="256dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/button_play"
+        android:background="@drawable/play_button_small"
         android:contentDescription="@string/play"
         android:onClick="playbackButtonHandler"
         android:scaleType="center" />

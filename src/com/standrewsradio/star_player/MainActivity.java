@@ -60,13 +60,13 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 			play();
     		playing = true;
     		//R.id.imageButton1.setImageResource(R.drawable.);
-    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.button_pause);
+    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.pause_button_small);
     	} else {
     		// Already playing, so stop playback
     		stop();
     		playing = false;
     		//R.id.imageButton1.setImageResource(R.drawable.ic_launcher_play);
-    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.button_play);
+    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.play_button_small);
     	}
 	}
 	
