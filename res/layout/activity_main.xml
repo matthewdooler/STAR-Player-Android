@@ -4,29 +4,48 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:contentDescription="@string/STAR"
+    android:gravity="center"
     tools:context=".MainActivity" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="296dp"
-        android:layout_height="216dp"
-        android:layout_above="@+id/imageButton1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:contentDescription="@string/STAR"
-        android:src="@drawable/title" />
-    
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="256dp"
-        android:layout_height="256dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/play_button_small"
-        android:contentDescription="@string/play"
-        android:onClick="playbackButtonHandler"
-        android:scaleType="center" />
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="296dp"
+            android:layout_height="216dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/STAR"
+            android:paddingBottom="20dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/title" />
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="104dp"
+            android:background="@drawable/play_button_small"
+            android:contentDescription="@string/play"
+            android:onClick="playbackButtonHandler"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:scaleType="center" />
+
+    </LinearLayout>
 
 </RelativeLayout>
