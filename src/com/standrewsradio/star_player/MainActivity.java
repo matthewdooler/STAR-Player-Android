@@ -142,4 +142,6 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	private void stop() {
 		mediaPlayer.stop();
 	}
+	
+	//build a method that handles web-view
 }
