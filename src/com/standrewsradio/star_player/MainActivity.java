@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-				
+		getBuzzBox();
 	}
 
 	@Override
@@ -152,28 +152,31 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	
 	//build a method that handles web-view
 	public void getBuzzBox(){
-		WebView webview = new WebView(this);
-		setContentView(webview);
 		
-		getWindow().requestFeature(Window.FEATURE_PROGRESS);
+		//getWindow().requestFeature(Window.FEATURE_PROGRESS);
 		
-		webview.getSettings().setJavaScriptEnabled(true);
+		WebView view = (WebView) findViewById(R.id.webView1);
+		view.setWebViewClient(new WebViewClient());
 		
-		final Activity activity = this;
+		view.getSettings().setJavaScriptEnabled(true);
 		
-		webview.setWebChromeClient(new WebChromeClient() {
+		//final Activity activity = this;
+		
+		/*
+		view.setWebChromeClient(new WebChromeClient() {
 			public void onProgressChanged(WebView view, int progress) {
 				activity.setProgress(progress * 1000);
 			}
 		});
-		webview.setWebViewClient(new WebViewClient(){
+		view.setWebViewClient(new WebViewClient(){
 			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl){
 				Toast.makeText(activity, "Can't load websites.", Toast.LENGTH_SHORT).show();
 		
 			}
 		});
+		*/
 		
-		webview.loadUrl("https://standrewsradio.com/_buzzbox");
+		view.loadUrl("https://standrewsradio.com/_buzzbox");
 		
 		
 	}
