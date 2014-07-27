@@ -8,9 +8,17 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
+
+//STARPlayer Android Version 2.0 Beta 1
 
 public class MainActivity extends Activity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 	
@@ -39,6 +47,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		getBuzzBox();
 	}
 
 	@Override
@@ -60,13 +69,13 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 			play();
     		playing = true;
     		//R.id.imageButton1.setImageResource(R.drawable.);
-    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.button_pause);
+    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.pause_button_small);
     	} else {
     		// Already playing, so stop playback
     		stop();
     		playing = false;
     		//R.id.imageButton1.setImageResource(R.drawable.ic_launcher_play);
-    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.button_play);
+    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.play_button_small);
     	}
 	}
 	
@@ -141,5 +150,36 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 
 	private void stop() {
 		mediaPlayer.stop();
+	}
+	
+	//build a method that handles web-view
+	public void getBuzzBox(){
+		
+		//getWindow().requestFeature(Window.FEATURE_PROGRESS);
+		
+		WebView view = (WebView) findViewById(R.id.webView1);
+		view.setWebViewClient(new WebViewClient());
+		
+		view.getSettings().setJavaScriptEnabled(true);
+		
+		//final Activity activity = this;
+		
+		/*
+		view.setWebChromeClient(new WebChromeClient() {
+			public void onProgressChanged(WebView view, int progress) {
+				activity.setProgress(progress * 1000);
+			}
+		});
+		view.setWebViewClient(new WebViewClient(){
+			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl){
+				Toast.makeText(activity, "Can't load websites.", Toast.LENGTH_SHORT).show();
+		
+			}
+		});
+		*/
+		
+		view.loadUrl("https://standrewsradio.com/_buzzbox");
+		
+		
 	}
 }
