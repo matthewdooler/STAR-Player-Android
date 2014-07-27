@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+				
 	}
 
 	@Override
