@@ -11,9 +11,14 @@ public class WebViewHandler {
 	
 	boolean online;
 	
+	public WebViewHandler(View webview){
+		this.webview = webview;
+	}
+	
 	public void initialisze(){
 		//initialise webview object
 	}
+	
 	public void update(){
 		if(online){
 			//load standrewsradio.com/_buzzbox
