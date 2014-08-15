@@ -27,27 +27,15 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	private MediaPlayer mediaPlayer = null;
 	boolean playing = false;
 	boolean loading = false;// TODO: loading icon. it's easy, srsly.
-
+	private WebViewHandler handler;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-	    // Begin playback
-	    // TODO: maybe not here?? it blocks! esp. if no internets..
-	    // TODO: test what happens when not connuctud
-		//play();
-		
-	    //InputStream stream = null;
-	    //try {
-	     //  stream = getAssets().open("loading_black.gif");
-	    //} catch (IOException e) {
-	      //e.printStackTrace();
-	    //}
-	    //GifMovieView view = new GifMovieView(this, stream);
-	    //setContentView(view);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		getBuzzBox();
+		handler = new WebViewHandler();//pass webview into constructor
 	}
 
 	@Override

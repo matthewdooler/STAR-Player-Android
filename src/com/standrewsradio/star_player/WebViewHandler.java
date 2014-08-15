@@ -33,6 +33,10 @@ public class WebViewHandler {
 		this.initialLoad = false;
 	}
 
+	public WebViewHandler() {
+		// empty handler
+	}
+
 	public void initialisze(String defaultLoc){
 		//initialise webview object
 		this.update();
