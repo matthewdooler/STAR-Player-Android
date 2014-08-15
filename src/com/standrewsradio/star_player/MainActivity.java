@@ -155,31 +155,11 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	//build a method that handles web-view
 	public void getBuzzBox(){
 		
-		//getWindow().requestFeature(Window.FEATURE_PROGRESS);
-		
 		WebView view = (WebView) findViewById(R.id.webView1);
 		view.setWebViewClient(new WebViewClient());
 		
 		view.getSettings().setJavaScriptEnabled(true);
 		
-		//final Activity activity = this;
-		
-		/*
-		view.setWebChromeClient(new WebChromeClient() {
-			public void onProgressChanged(WebView view, int progress) {
-				activity.setProgress(progress * 1000);
-			}
-		});
-		view.setWebViewClient(new WebViewClient(){
-			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl){
-				Toast.makeText(activity, "Can't load websites.", Toast.LENGTH_SHORT).show();
-		
-			}
-		});
-		*/
-		
-		view.loadUrl("https://standrewsradio.com/_buzzbox");
-		
-		
+		view.loadUrl("https://standrewsradio.com/_buzzbox");	
 	}
 }
