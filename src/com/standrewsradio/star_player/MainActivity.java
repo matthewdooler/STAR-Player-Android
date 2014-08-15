@@ -28,14 +28,15 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	boolean playing = false;
 	boolean loading = false;// TODO: loading icon. it's easy, srsly.
 	private WebViewHandler handler;
+	private WebView webview;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		getBuzzBox();
-		handler = new WebViewHandler();//pass webview into constructor
+		this.webview = getBuzzBox();
+		handler = new WebViewHandler(webview);//pass webview into constructor
 	}
 
 	@Override
@@ -141,7 +142,7 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	}
 	
 	//build a method that handles web-view
-	public void getBuzzBox(){
+	public WebView getBuzzBox(){
 		
 		WebView view = (WebView) findViewById(R.id.webView1);
 		view.setWebViewClient(new WebViewClient());
@@ -149,5 +150,6 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 		view.getSettings().setJavaScriptEnabled(true);
 		
 		view.loadUrl("https://standrewsradio.com/_buzzbox");	
+		return view;
 	}
 }

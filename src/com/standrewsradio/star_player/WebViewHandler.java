@@ -53,10 +53,8 @@ public class WebViewHandler {
 				webview.loadUrl(defaultURL);
 				initialLoad = true;
 				offlinePage = false;
-			}else{
-				if(offlinePage){
-					webview.loadUrl(defaultURL);
-				}
+			}else if(offlinePage){
+				webview.loadUrl(defaultURL);
 			}
 		}else{
 			//change view to display - no connection display
