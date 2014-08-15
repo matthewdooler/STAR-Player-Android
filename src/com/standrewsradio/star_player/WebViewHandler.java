@@ -12,6 +12,7 @@ import android.webkit.WebView;
 
 public class WebViewHandler {
 	private static final String NOCONNECTIONFILE = "noconnection.html";
+	private static final String DEFAULTPATH = "assets/";
 	private static final String ENDLINE = "\\n";
 	//class to handle webview
 
@@ -59,7 +60,7 @@ public class WebViewHandler {
 			}
 		}else{
 			//change view to display - no connection display
-			String data = loadHTMLFile(NOCONNECTIONFILE);
+			String data = loadHTMLFile(DEFAULTPATH+NOCONNECTIONFILE);
 			webview.loadData(data, HTML, ENCODING);
 			offlinePage = true;
 		}
