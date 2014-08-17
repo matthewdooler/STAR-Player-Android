@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -23,7 +25,7 @@ public class WebViewHandler {
 
 	private boolean initialLoad;
 
-	boolean online;
+	private AtomicBoolean online;
 	
 	boolean offlinePage;
 
@@ -92,5 +94,17 @@ public class WebViewHandler {
 			return null;
 		}
 		return reader;
+	}
+	
+	private boolean networkStat(){
+		android.net.ConnectivityManager connectivityManager =
+			    (android.net.ConnectivityManager)getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
+
+			android.net.NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+			if (networkInfo != null && networkInfo.isConnected()) {
+			    // 接続済み
+			} else {
+			    // 未接続
+			}
 	}
 }
