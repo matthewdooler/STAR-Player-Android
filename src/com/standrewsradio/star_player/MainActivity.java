@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -151,5 +152,17 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 		
 		view.loadUrl("https://standrewsradio.com/_buzzbox");	
 		return view;
+	}
+	
+	private boolean networkStat(){
+		android.net.ConnectivityManager connectivityManager =
+			    (android.net.ConnectivityManager)getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
+
+			android.net.NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+			if (networkInfo != null && networkInfo.isConnected()) {
+			    return true;
+			} else {
+			    return false;
+			}
 	}
 }

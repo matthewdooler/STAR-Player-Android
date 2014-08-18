@@ -49,7 +49,7 @@ public class WebViewHandler {
 	}
 
 	public void update(){
-		if(online){
+		if(online.get()){
 			//load standrewsradio.com/_buzzbox
 			if(!initialLoad){
 				webview.loadUrl(defaultURL);
@@ -96,15 +96,5 @@ public class WebViewHandler {
 		return reader;
 	}
 	
-	private boolean networkStat(){
-		android.net.ConnectivityManager connectivityManager =
-			    (android.net.ConnectivityManager)getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
-
-			android.net.NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-			if (networkInfo != null && networkInfo.isConnected()) {
-			    // 接続済み
-			} else {
-			    // 未接続
-			}
-	}
+	
 }
