@@ -1,18 +1,22 @@
 package com.standrewsradio.star_player;
 
 import android.content.Context;
+import android.webkit.WebView;
 
 public class STARNetworkMonitor extends NetworkStatus {
 
-	public STARNetworkMonitor(Context context) {
+	WebView webview;
+	WebViewHandler handler;
+	
+	public STARNetworkMonitor(Context context, WebView webview) {
 		super(context);
-		// TODO Auto-generated constructor stub
+ 		this.webview = webview;
+		
 	}
 
 	@Override
 	public void onNetworkStatusChangeed(NetworkStatus status) {
-		// TODO Auto-generated method stub
-
+		handler.update();
 	}
 
 }

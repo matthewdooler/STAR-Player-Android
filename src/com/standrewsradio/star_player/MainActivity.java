@@ -25,6 +25,8 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	
 	private String TAG = getClass().getSimpleName();
 	String serverAddr = "http://stream.standrewsradio.com:8080/stream/1/";
+	private String alternateAddr = "http://stream.standrewsradio.com:8080/stream/2/";
+	String[] addresses = {serverAddr, alternateAddr};
 	private MediaPlayer mediaPlayer = null;
 	boolean playing = false;
 	boolean loading = false;// TODO: loading icon. it's easy, srsly.
