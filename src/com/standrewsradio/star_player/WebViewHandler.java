@@ -25,8 +25,6 @@ public class WebViewHandler {
 
 	private boolean initialLoad;
 
-	private AtomicBoolean online;
-	
 	boolean offlinePage;
 
 	private String defaultURL;
@@ -42,14 +40,15 @@ public class WebViewHandler {
 
 	public void initialisze(String defaultLoc){
 		//initialise webview object
-		this.update();
+
+		
 		this.defaultURL = defaultLoc;
 		//set webview not to follow further link
-		update();
+
 	}
 
-	public void update(){
-		if(online.get()){
+	public void update(boolean connected){
+		if(connected){
 			//load standrewsradio.com/_buzzbox
 			if(!initialLoad){
 				webview.loadUrl(defaultURL);

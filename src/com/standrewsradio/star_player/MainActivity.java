@@ -22,24 +22,27 @@ import android.widget.Toast;
 //STARPlayer Android Version 2.0 Beta 1
 
 public class MainActivity extends Activity implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
-	
+
 	private String TAG = getClass().getSimpleName();
 	String serverAddr = "http://stream.standrewsradio.com:8080/stream/1/";
 	private String alternateAddr = "http://stream.standrewsradio.com:8080/stream/2/";
-	String[] addresses = {serverAddr, alternateAddr};
+	private String[] addresses = {serverAddr, alternateAddr};
 	private MediaPlayer mediaPlayer = null;
 	boolean playing = false;
 	boolean loading = false;// TODO: loading icon. it's easy, srsly.
 	private WebViewHandler handler;
 	private WebView webview;
-	
+	STARNetworkMonitor network;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		this.webview = getBuzzBox();
 		handler = new WebViewHandler(webview);//pass webview into constructor
+
+		network = new STARNetworkMonitor( getBaseContext(), webview );
 	}
 
 	@Override
@@ -48,29 +51,29 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
-	
+
 	public void playbackButtonHandler(View v){
-	    if(v.getId() == R.id.imageButton1){
-	    	togglePlayback();
-	    }
+		if(v.getId() == R.id.imageButton1){
+			togglePlayback();
+		}
 	}
-	
+
 	private synchronized void togglePlayback() {
 		if(!playing) {
 			// Not playing, so start playback
 			play();
-    		playing = true;
-    		//R.id.imageButton1.setImageResource(R.drawable.);
-    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.pause_button_small);
-    	} else {
-    		// Already playing, so stop playback
-    		stop();
-    		playing = false;
-    		//R.id.imageButton1.setImageResource(R.drawable.ic_launcher_play);
-    		findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.play_button_small);
-    	}
+			playing = true;
+			//R.id.imageButton1.setImageResource(R.drawable.);
+			findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.pause_button_small);
+		} else {
+			// Already playing, so stop playback
+			stop();
+			playing = false;
+			//R.id.imageButton1.setImageResource(R.drawable.ic_launcher_play);
+			findViewById(R.id.imageButton1).setBackgroundResource(R.drawable.play_button_small);
+		}
 	}
-	
+
 	private void play() {
 		Uri serverUri = Uri.parse(serverAddr);
 		try {
@@ -143,28 +146,27 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
 	private void stop() {
 		mediaPlayer.stop();
 	}
-	
+
 	//build a method that handles web-view
 	public WebView getBuzzBox(){
-		
+
 		WebView view = (WebView) findViewById(R.id.webView1);
 		view.setWebViewClient(new WebViewClient());
-		
+
 		view.getSettings().setJavaScriptEnabled(true);
-		
-		view.loadUrl("https://standrewsradio.com/_buzzbox");	
+	
 		return view;
 	}
-	
+
 	private boolean networkStat(){
 		android.net.ConnectivityManager connectivityManager =
-			    (android.net.ConnectivityManager)getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
+				(android.net.ConnectivityManager)getSystemService(android.content.Context.CONNECTIVITY_SERVICE);
 
-			android.net.NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-			if (networkInfo != null && networkInfo.isConnected()) {
-			    return true;
-			} else {
-			    return false;
-			}
+		android.net.NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

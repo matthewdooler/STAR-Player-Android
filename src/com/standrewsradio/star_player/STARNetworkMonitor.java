@@ -10,13 +10,12 @@ public class STARNetworkMonitor extends NetworkStatus {
 	
 	public STARNetworkMonitor(Context context, WebView webview) {
 		super(context);
- 		this.webview = webview;
-		
+ 		this.webview = webview;		
 	}
 
 	@Override
 	public void onNetworkStatusChangeed(NetworkStatus status) {
-		handler.update();
+		handler.update(status.isConnected());
 	}
 
 }
